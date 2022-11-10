@@ -20,7 +20,8 @@ SET time_zone = "+00:00";
 --
 -- База данных: `std_1692_prestige_test_db`
 --
-
+CREATE DATABASE IF NOT EXISTS `prestige_test_db` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `prestige_test_db`;
 -- --------------------------------------------------------
 
 --
