@@ -2,10 +2,21 @@
 
 {% block content %}
 <div class="row">
-    <div class="col-lg-12">
-        <h1 class="my-5">Hello, world!</h1>
-        
-
+    <div class="col-lg-12 text-center">
+        <h2>Введите ваше сообщение</h2>
+        <form method="post" enctype="multipart/form-data" action="{{ url_for('post_new') }}">
+            <div class="input-group input-group-sm mb-3">
+                <span class="input-group-text" id="inputGroup-sizing-sm">Имя</span>
+                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="name">
+            </div>
+            <button type="submit" class="btn btn-outline-primary">Отправить</button>
+        </form>
+        <ul class="mt-5 list-group">
+            {% for name in names%}
+            <li class="list-group-item">{{ name }}</li>
+            {% endfor %}
+        </ul>
     </div>
 </div>
 {% endblock %}
+    
