@@ -18,9 +18,10 @@ services:
       - 3306:3306
     restart: unless-stopped #условие для рестарта в случае остановки контейнера
 
-  prestige__app:
+  prestige_app:
     container_name: prestige_app
     hostname: prestige_app
+    image: dinarganiev/prestige_app:latest
     build: # Параметры для сборки приложения
       context: ./app # Каталог, используемый для сборки
       dockerfile: Dockerfile # Файл, используемый для сборки образа приложения
