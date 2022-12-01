@@ -32,4 +32,5 @@ def post_new():
         sql = 'SELECT * FROM user'
         cursor.execute(sql)
         names = cursor.fetchall()
+        
     return render_template('index.html', names=names)
