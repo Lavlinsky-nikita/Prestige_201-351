@@ -28,4 +28,9 @@ def post_new():
         cursor.execute(sql, (form))
     connection.commit()
 
+    with connection.cursor() as cursor:
+        sql = 'SELECT * FROM user'
+        cursor.execute(sql)
+        names = cursor.fetchall()
+        
     return render_template('index.html', names=names)
