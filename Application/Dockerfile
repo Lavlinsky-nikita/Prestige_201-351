@@ -2,7 +2,7 @@ FROM python:3.8-bullseye
 
 WORKDIR /app
 
-COPY ./Application/app ./
+COPY ./app ./
 
 ARG BUILD_DATE
 ARG BUILD_VERSION
