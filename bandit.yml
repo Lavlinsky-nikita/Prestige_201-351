@@ -1,1 +1,1 @@
-exlude_dirs: ["app/config.py"]
+exlude_dirs: ["./app/config.py"]
