@@ -20,6 +20,8 @@ def index():
         names= cursor.fetchall()
     return render_template('index.html', names=names)
 
+
+
 @app.route('/', methods=["GET", "POST"])
 def post_new():
     form = request.form.get('name')
