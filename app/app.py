@@ -20,6 +20,8 @@ def index():
         names= cursor.fetchall()
     return render_template('index.html', names=names)
 
+
+
 @app.route('/', methods=["GET", "POST"])
 def post_new():
     form = request.form.get('name')
@@ -32,4 +34,5 @@ def post_new():
         sql = 'SELECT * FROM user'
         cursor.execute(sql)
         names = cursor.fetchall()
+        
     return render_template('index.html', names=names)
