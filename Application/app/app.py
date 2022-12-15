@@ -12,6 +12,9 @@ connection = pymysql.connect(host=MYSQL_HOST,
                             charset='utf8mb4',
                             cursorclass=pymysql.cursors.DictCursor)
 
+
+
+
 @app.route('/')
 def index():
     with connection.cursor() as cursor:
