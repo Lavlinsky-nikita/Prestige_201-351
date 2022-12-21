@@ -1,22 +1,54 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div class="row">
-    <div class="col-lg-12 text-center">
-        <h2>Введите ваше сообщение</h2>
-        <form method="post" enctype="multipart/form-data" action="{{ url_for('post_new') }}">
-            <div class="input-group input-group-sm mb-3">
-                <span class="input-group-text" id="inputGroup-sizing-sm">Имя</span>
-                <input type="text" class="form-control" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" name="name">
+<div class="h-100 text-center d-flex p-3 bg-light">
+    <div class="m-auto">
+        <h1 class="title mb-5 font-weight-bold">Престиж</h1>
+        
+        <div class="container">
+            <p class="description w-75 mb-5 px-3 mx-auto">
+                <h3> Приложение для учета аудиторного фонда университета. </h3>
+            </p>
+        </div>
+        <h6 class="text-uppercase">Рассчитать данные о площадях и объемах каждого помещения </h4> 
+        {% for room in rooms %}
+            <div class="container">
+                <p class="description w-75 mb-10 px-3 mx-auto">
+                            <a class="btn btn-secondary" href="{{ url_for('show_room', room_id=room.room_id) }}">Просмотр комнаты {{room.room_id}}</a>
+                        </div>
+                </p>    
+        {% endfor %}
+        
+        
+        
+        <div class="container">
+            <p class="description w-75 mb-5 px-3 mx-auto">
+                    Для указанного корпуса получить количество факультетов, их
+                    названия и структуру, находящиеся в этом корпусе
+                    <h5 class="text-uppercase">Корпус: {{ name_buildings }} </h4> 
+                    <h5 class="text-uppercase">количество факультетов: {{ name_buildings }} </h4> 
+                    
+                    
+                </p>
+        </div>
+
+            <div class="container">
+                <p class="description w-75 mb-5 px-3 mx-auto">
+                    
+                    Предоставить возможность добавления и изменения информации о
+                    корпусах в университете;
+                </p>
             </div>
-            <button type="submit" class="btn btn-outline-primary">Отправить</button>
-        </form>
-        <ul class="mt-5 list-group">
-            {% for name in names%}
-            <li class="list-group-item">{{ name }}</li>
-            {% endfor %}
-        </ul>
+            <div class="container">
+                <p class="description w-75 mb-5 px-3 mx-auto">
+                    Предоставить возможность добавления и изменения информации о
+                    комнатах в корпусах университета.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
     </div>
-</div>
-{% endblock %}
-    
+    {% endblock %}
