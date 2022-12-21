@@ -1,26 +1,26 @@
-import os
+# import os
 from flask import Flask, render_template, send_file, abort, send_from_directory, request
-from sqlalchemy import MetaData
-from flask_sqlalchemy import SQLAlchemy
-from flask_migrate import Migrate
-from flask_login import login_required
+# from sqlalchemy import MetaData
+# from flask_sqlalchemy import SQLAlchemy
+# from flask_migrate import Migrate
+# from flask_login import login_required
 import pymysql.cursors
 from config import MYSQL_DATABASE, MYSQL_HOST, MYSQL_PASSWORD, MYSQL_USER
 
 app = Flask(__name__)
 application = app
 
-app.config.from_pyfile('config.py')
+# app.config.from_pyfile('config.py')
 
 
 
-convention = {
-    "ix": 'ix_%(column_0_label)s',
-    "uq": "uq_%(table_name)s_%(column_0_name)s",
-    "ck": "ck_%(table_name)s_%(constraint_name)s",
-    "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
-    "pk": "pk_%(table_name)s"
-}
+# convention = {
+#     "ix": 'ix_%(column_0_label)s',
+#     "uq": "uq_%(table_name)s_%(column_0_name)s",
+#     "ck": "ck_%(table_name)s_%(constraint_name)s",
+#     "fk": "fk_%(table_name)s_%(column_0_name)s_%(referred_table_name)s",
+#     "pk": "pk_%(table_name)s"
+# }
 
 # metadata = MetaData(naming_convention=convention)
 # db = SQLAlchemy(app, metadata=metadata)
@@ -33,13 +33,13 @@ connection = pymysql.connect(host=MYSQL_HOST,
                             charset='utf8mb4',
                             cursorclass=pymysql.cursors.DictCursor)
 
-from auth import bp as auth_bp, init_login_manager
-app.register_blueprint(auth_bp)
+# from auth import bp as auth_bp, init_login_manager
+# app.register_blueprint(auth_bp)
 
 
-init_login_manager(app)
+# init_login_manager(app)
 
-from models import *
+# from models import *
 
 
 class Cub:
@@ -65,12 +65,12 @@ class Square:
 # @login_required
 def show_room(room_id):
 
-    # room_number = room_id
+    room_number = room_id
     # height = Room.query.filter_by(room_id=room_id).first().height
     # width = Room.query.filter_by(room_id=room_id).first().width
     # length = Room.query.filter_by(room_id=room_id).first().length
     height = 3
-    idth = 5
+    width = 5
     length = 6
     
     volume_room = Cub(height, width, length).volume
@@ -90,31 +90,37 @@ def show_building(building_id):
 # @login_required
 def edit_buildings(building_id):
     # building = Building.query.get(building_id)
-    sql_building = 'SELECT * FROM buildings WHERE building_id = ?'
-    cursor.execute(sql_building, (building_id, ))
-    building = cursor.fetchone()
-    cursor.close()
+    with connection.cursor() as cursor:
+        sql_building = 'SELECT * FROM buildings WHERE building_id = ?'
+        cursor.execute(sql_building, (building_id, ))
+        building = cursor.fetchone()
+        cursor.close()
     return render_template('edit_buildings.html', building=building)
 
 @app.route('/edit_room/<int:room_id>')
 # @login_required
 def edit_room(room_id):
     # room = Room.query.get(room_id)
-    sql_room = 'SELECT * FROM rooms WHERE room_id = ?'
-    cursor.execute(sql_room, (room_id, ))
-    room = cursor.fetchone()
-    cursor.close()
+    with connection.cursor() as cursor:
+        sql_room = 'SELECT * FROM rooms WHERE room_id = ?'
+        cursor.execute(sql_room, (room_id, ))
+        room = cursor.fetchone()
+        cursor.close()
     return render_template('edit_room.html', room=room)
 
 
 @app.route('/')
 def index():
-    sql_rooms = 'SELECT * FROM rooms'
-    cursor.execute(sql_rooms)
-    rooms = cursor.fetchall()
-    sql_placements = 'SELECT * FROM placements'
-    cursor.execute(sql_placements)
-    placements = cursor.fetchall()
+    with connection.cursor() as cursor:
+        sql_rooms = 'SELECT * FROM rooms'
+        cursor.execute(sql_rooms)
+        rooms = cursor.fetchall()
+        cursor.close()
+    with connection.cursor() as cursor:
+        sql_placements = 'SELECT * FROM placements'
+        cursor.execute(sql_placements)
+        placements = cursor.fetchall()
+        cursor.close()
     return render_template('index.html', rooms=rooms, placements=placements)
 
 
