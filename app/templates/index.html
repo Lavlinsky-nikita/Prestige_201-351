@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="h-100 text-center d-flex p-3 bg-light">
+    <div class="m-auto">
+        <h1 class="title mb-5 font-weight-bold">Престиж</h1>
+        
+        <div class="container">
+            <p class="description w-75 mb-5 px-3 mx-auto">
+                <h3> Приложение для учета аудиторного фонда университета. </h3>
+            </p>
+        </div>
+        <h6 class="text-uppercase">Рассчитать данные о площадях и объемах каждого помещения </h4> 
+        {% for room in rooms %}
+            <div class="container">
+                <p class="description w-75 mb-10 px-3 mx-auto">
+                            <a class="btn btn-secondary" href="{{ url_for('show_room', room_id=room.room_id) }}">Просмотр комнаты {{room.room_id}}</a>
+                        </div>
+                </p>    
+        {% endfor %}
+        
+        
+        
+        <div class="container">
+            <p class="description w-75 mb-5 px-3 mx-auto">
+                    Для указанного корпуса получить количество факультетов, их
+                    названия и структуру, находящиеся в этом корпусе
+                    <h5 class="text-uppercase">Корпус: {{ name_buildings }} </h4> 
+                    <h5 class="text-uppercase">количество факультетов: {{ name_buildings }} </h4> 
+                    
+                    
+                </p>
+        </div>
+
+            <div class="container">
+                <p class="description w-75 mb-5 px-3 mx-auto">
+                    
+                    Предоставить возможность добавления и изменения информации о
+                    корпусах в университете;
+                </p>
+            </div>
+            <div class="container">
+                <p class="description w-75 mb-5 px-3 mx-auto">
+                    Предоставить возможность добавления и изменения информации о
+                    комнатах в корпусах университета.
+                </p>
+            </div>
+            
+            
+            
+            
+        </div>
+    </div>
+    {% endblock %}

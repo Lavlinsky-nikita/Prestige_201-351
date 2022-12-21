@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="h-100 text-center d-flex p-3 bg-light">
+    <div class="m-auto">
+        <h1 class="title mb-5 font-weight-bold">Престиж</h1>
+        
+        <div class="container">
+            <p class="description w-75 mb-5 px-3 mx-auto">
+                    Рассчитать данные о площадях и объемах каждого помещения
+                    <h4 class="text-uppercase">Номер команты: {{ room_number }} </h4>                 
+                    <h4 class="text-uppercase">Объем комнаты: {{ volume_room }} </h4>                 
+                    <h4 class="text-uppercase">Площадь комнаты: {{ area_room }} </h4> 
+            </p>
+        </div>
+
+{% endblock %}
