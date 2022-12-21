@@ -12,29 +12,19 @@ class Test(unittest.TestCase):
         print("test1: OK")
     
     def test2(self):
-        resp = requests.get("http://127.0.0.1:5000/auth/login")
-        self.assertEqual(resp.status_code, 200)
-        print("test2: OK")
-    
-    def test3(self):
         resp = requests.get("http://127.0.0.1:5000/show_room/1")
         self.assertEqual(resp.status_code, 200)
         print("test3: OK")
 
+    def test3(self):
+        resp = requests.get("http://127.0.0.1:5000/show_building/1")
+        self.assertEqual(resp.status_code, 200)
+        print("test4: OK")
+    
     def test4(self):
         resp = requests.get("http://127.0.0.1:5000/show_building/1")
         self.assertEqual(resp.status_code, 200)
         print("test4: OK")
-    
-    def test5(self):
-        resp = requests.get("http://127.0.0.1:5000/show_building/1")
-        self.assertEqual(resp.status_code, 200)
-        print("test4: OK")
-    
-    def test6(self):
-        resp = requests.get("http://127.0.0.1:5000/auth/logout")
-        self.assertEqual(resp.status_code, 200)
-        print("test6: OK")
 
 class TestSquare(unittest.TestCase):
     
@@ -57,8 +47,6 @@ if __name__ == '__main__':
     tester.test2()
     tester.test3()
     tester.test4()
-    tester.test5()
-    tester.test6()
 
     tester1 = TestSquare()
     tester1.test_area()
