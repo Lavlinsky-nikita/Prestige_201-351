@@ -35,7 +35,7 @@ class TestSquare(unittest.TestCase):
 class TestCub(unittest.TestCase):
     
     def test_volume(self):
-        self.assertEqual(Cub(7,4,3).volume, 28)
+        self.assertEqual(Cub(7,4,3).volume, 84)
         print("test_volume: OK")
 
        
