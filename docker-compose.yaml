@@ -12,6 +12,7 @@ services:
     environment: #переменные окружения
       MYSQL_ROOT_PASSWORD: 12345678
       MYSQL_USER: admin
+      MYSQL_HOST: prestige_test_db
       MYSQL_PASSWORD: admin
       MYSQL_DATABASE: prestige_test_db
     ports: # Сопоставление портов хост-машины и контейнера
@@ -27,9 +28,14 @@ services:
       dockerfile: Dockerfile # Файл, используемый для сборки образа приложения
     ports:
      - 10090:80
+    # networks:
+    #   - prestige-net
     restart: unless-stopped
     depends_on: # Указание на зависимость сервиса от другого сервиса
       - prestige_test_db
+
+# networks:
+#   prestige-net:
 
 volumes:
   dbdata:
