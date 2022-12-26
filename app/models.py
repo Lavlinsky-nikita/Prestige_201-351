@@ -151,3 +151,13 @@ class Role(db.Model):
 
     def __repr__(self):
         return '<Role %r>' % self.role_name
+
+class Books(db.Model):
+    __tablename__ = 'books'
+    
+    id = db.Column(db.Integer, primary_key=True)
+    book_name = db.Column(db.String(100), nullable=False)
+    book_description = db.Column(db.Text, nullable=False)
+
+    def __repr__(self):
+        return '<Book %r>' % self.book_name
