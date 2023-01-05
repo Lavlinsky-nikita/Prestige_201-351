@@ -1,5 +1,5 @@
 import unittest
-# import requests
+import requests
 
 from app import Square, Cub
 
