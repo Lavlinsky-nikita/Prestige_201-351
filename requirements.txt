@@ -1,4 +1,5 @@
 Flask
 cryptography
 pymysql
+requests
 
