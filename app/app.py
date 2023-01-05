@@ -12,6 +12,25 @@ connection = pymysql.connect(host=MYSQL_HOST,
                             charset='utf8mb4',
                             cursorclass=pymysql.cursors.DictCursor)
 
+class Cub:
+    def __init__(self, length, width, height):
+        self.length = length
+        self.width  = width
+        self.height = height
+
+    @property
+    def volume(self):
+        return self.length * self.width * self.height
+
+class Square:
+    def __init__(self, length, width):
+        self.length = length
+        self.width  = width
+
+    @property
+    def area(self):
+        return self.width * self.length
+
 @app.route('/')
 def index():
     with connection.cursor() as cursor:
