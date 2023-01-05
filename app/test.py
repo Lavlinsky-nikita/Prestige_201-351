@@ -13,12 +13,12 @@ class Test(unittest.TestCase):
     def test2(self):
         resp = requests.get("http://127.0.0.1:5000/")
         self.assertEqual(resp.status_code, 200)
-        print("test3: OK")
+        print("test2: OK")
 
     def test3(self):
-        resp = requests.get("http://127.0.0.1:5000/show_building/1")
+        resp = requests.get("http://127.0.0.1:5000/")
         self.assertEqual(resp.status_code, 200)
-        print("test4: OK")
+        print("test3: OK")
     
     def test4(self):
         resp = requests.get("http://127.0.0.1:5000/show_building/1")
