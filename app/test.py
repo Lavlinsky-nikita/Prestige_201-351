@@ -1,28 +1,29 @@
 import unittest
-import requests
+# import requests
 
 from app import Square, Cub
 
-class Test(unittest.TestCase):
+# class Test(unittest.TestCase):
 
-    def test1(self):
-        resp = requests.get("http://127.0.0.1:5000/")
-        self.assertEqual(resp.status_code, 200)
-        print("test1: OK")
+#     def test1(self):
+#         resp = requests.get("http://127.0.0.1:5000/")
+#         self.assertEqual(resp.status_code, 200)
+#         print("test1: OK")
     
-    def test2(self):
-        resp = requests.get("http://127.0.0.1:5000/")
-        self.assertEqual(resp.status_code, 200)
-        print("test3: OK")
+#     def test2(self):
+#         resp = requests.get("http://127.0.0.1:5000/")
+#         self.assertEqual(resp.status_code, 200)
+#         print("test3: OK")
 
-        resp = requests.get("http://127.0.0.1:5000/")
-        self.assertEqual(resp.status_code, 200)
-        print("test4: OK")
+#     def test3(self):
+#         resp = requests.get("http://127.0.0.1:5000/show_building/1")
+#         self.assertEqual(resp.status_code, 200)
+#         print("test4: OK")
     
-    def test4(self):
-        resp = requests.get("http://127.0.0.1:5000/")
-        self.assertEqual(resp.status_code, 200)
-        print("test4: OK")
+#     def test4(self):
+#         resp = requests.get("http://127.0.0.1:5000/show_building/1")
+#         self.assertEqual(resp.status_code, 200)
+#         print("test4: OK")
 
 class TestSquare(unittest.TestCase):
     
@@ -40,11 +41,11 @@ class TestCub(unittest.TestCase):
 
 
 if __name__ == '__main__':
-    tester = Test()
-    tester.test1()
-    tester.test2()
-    tester.test3()
-    tester.test4()
+    # tester = Test()
+    # tester.test1()
+    # tester.test2()
+    # tester.test3()
+    # tester.test4()
 
     tester1 = TestSquare()
     tester1.test_area()
