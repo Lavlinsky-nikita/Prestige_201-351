@@ -1,0 +1,38 @@
+version: '3'
+
+services:
+
+  prestige_test_db: #Имя сервиса
+    container_name: prestige_test_db #Имя с которым запустится контейнер
+    hostname: prestige_test_db #Имя "хоста" которым будет считать себя контейнер
+    image: mysql:latest #Образ из которого запускается контейнер
+    volumes: #Подключаемые директории
+      - dbdata:/var/lib/mysql #Директории вида хост_директория:директория_контейнера
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql
+    environment: #переменные окружения
+      MYSQL_ROOT_PASSWORD: 12345678
+      MYSQL_USER: admin
+      MYSQL_HOST: prestige_test_db
+      MYSQL_PASSWORD: admin
+      MYSQL_DATABASE: prestige_test_db
+    ports: # Сопоставление портов хост-машины и контейнера
+      - 3306:3306
+    restart: unless-stopped #условие для рестарта в случае остановки контейнера
+
+  prestige_app:
+    container_name: prestige_app
+    hostname: prestige_app
+    image: dinarganiev/prestige_app:latest
+    ports:
+     - 10090:80
+    # networks:
+    #   - prestige-net
+    restart: unless-stopped
+    depends_on: # Указание на зависимость сервиса от другого сервиса
+      - prestige_test_db
+
+# networks:
+#   prestige-net:
+
+volumes:
+  dbdata:
