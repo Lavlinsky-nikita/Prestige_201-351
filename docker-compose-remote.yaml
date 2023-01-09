@@ -23,9 +23,6 @@ services:
     container_name: prestige_app
     hostname: prestige_app
     image: dinarganiev/prestige_app:latest
-    build: # Параметры для сборки приложения
-      context: ./ # Каталог, используемый для сборки
-      dockerfile: Dockerfile # Файл, используемый для сборки образа приложения
     ports:
      - 10090:80
     # networks:
